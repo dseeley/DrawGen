@@ -1,0 +1,7 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix} (c) Copyright 2016 Dougal Seeley.  All rights reserved.
+<#if licenseLast??>
+${licenseLast}
+</#if>
