@@ -12,7 +12,7 @@ Website: http://dougalseeley.com/my-software/drawgen
 ### Installing:
 DrawGen is written in Java, so needs the Java runtime environment installed. It's a free download from here: http://java.com/download. It will work equally well on Windows, Mac or Linux.
 
-###Version History:
+### Version History:
 + 26th November 2016 - v2.0. 
   + First open source release.  Updated for latest IPC dive pools.  Allows creation of BPA, IPC and USPA draws.
 + 20th February 2014 - v1.2
