@@ -48,7 +48,7 @@ public class DrawGen extends javax.swing.JFrame
     private final AutoDrawMgr autoDrawMgr = new AutoDrawMgr();
     private final ManualDrawMgr manualDrawMgr = new ManualDrawMgr();
 
-    private final ActiveDraw activeDraw = new ActiveDraw();
+    private ActiveDraw activeDraw = new ActiveDraw(null);
 
     private int scalePercent = 100;
     private final DocFlavor myDocFlavor = DocFlavor.SERVICE_FORMATTED.PRINTABLE;
@@ -1060,7 +1060,7 @@ public class DrawGen extends javax.swing.JFrame
         JComboBox cb = (JComboBox) evt.getSource();
         this.scalePercent = Integer.parseInt(cb.getSelectedItem().toString().substring(0, cb.getSelectedItem().toString().length() - 1));
 
-        this.activeDraw.setActiveDraw(this.activeDraw.draw);
+        this.activeDraw = new ActiveDraw(this.activeDraw.draw);
 
         jPanelPictureOutput.repaint();
     }//GEN-LAST:event_jComboBoxZoomActionPerformed
@@ -1282,7 +1282,7 @@ public class DrawGen extends javax.swing.JFrame
 
         if (OkToDeletePrevious == JOptionPane.OK_OPTION)
         {
-            activeDraw.setActiveDraw(manualDrawMgr.getSelectedDraw());
+            activeDraw = new ActiveDraw(manualDrawMgr.getSelectedDraw());
             manualDrawMgr.resetActive();
             ArrayList<Formation> selectedDivePool = activeDraw.draw.getDivePool();
 
@@ -1294,8 +1294,8 @@ public class DrawGen extends javax.swing.JFrame
                     String[] StringLines = ManualString.split("\n");
                     for (int RoundCount = 0; RoundCount < StringLines.length; RoundCount++)
                     {
-                        StringLines[RoundCount] = StringLines[RoundCount].replaceAll(" ", "");
-                        String[] roundFormations = StringLines[RoundCount].split("[^a-zA-Z0-9]");
+                        StringLines[RoundCount] = StringLines[RoundCount].toUpperCase();
+                        String[] roundFormations = StringLines[RoundCount].split("[^a-zA-Z0-9]+");
                         ArrayList<Formation> validRoundFormations = new ArrayList<>();
 
                         Boolean isValidFormation = false;
@@ -1455,17 +1455,22 @@ public class DrawGen extends javax.swing.JFrame
     private class ActiveDraw
     {
         public Draw draw = null;
-        public BufferedImage img = null;
-
-        public void setActiveDraw(Draw draw)
+        
+        public BufferedImage img()
         {
-            this.draw = draw;
             if (this.draw != null)
             {
-                setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                this.img = this.draw.getScaledImg(scalePercent);
-                setCursor(Cursor.getDefaultCursor());
+                return (this.draw.getScaledImg(scalePercent));
             }
+            else
+            {
+                return null;
+            }
+        }
+
+        public ActiveDraw(Draw draw)
+        {
+            this.draw = draw;
         }
     }
 
@@ -1585,7 +1590,7 @@ public class DrawGen extends javax.swing.JFrame
 
         public void activate()
         {
-            activeDraw.setActiveDraw(this.getSelectedDraw());
+            activeDraw = new ActiveDraw(this.getSelectedDraw());
 
             /* Populate the combobox with each discipline from each GovBody. */
             DefaultComboBoxModel prepopulateComboBoxModel = (DefaultComboBoxModel) jComboBoxPrepopulate.getModel();
@@ -1644,7 +1649,7 @@ public class DrawGen extends javax.swing.JFrame
 
         public void activate()
         {
-            activeDraw.setActiveDraw(null);
+            activeDraw = new ActiveDraw(null);
 
             if (buttonGroupGoverningBody != null && buttonGroupDisciplineAuto != null)
             {
@@ -1669,7 +1674,7 @@ public class DrawGen extends javax.swing.JFrame
                                     selectedCategory = getSelectedButtonName(buttonGroupCategoryBPA4WayFS);
                                     if (selectedCategory != null)
                                     {
-                                        activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
+                                        activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
                                     }
                                     break;
                                 }
@@ -1679,14 +1684,14 @@ public class DrawGen extends javax.swing.JFrame
                                     selectedCategory = getSelectedButtonName(buttonGroupCategoryBPA8WayFS);
                                     if (selectedCategory != null)
                                     {
-                                        activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
+                                        activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
                                     }
                                     break;
                                 }
                                 case "FOURWAYVFS":
                                 {
                                     jPanelCategory.setVisible(false);
-                                    activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory("OPEN").getDraw());
+                                    activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory("OPEN").getDraw());
                                     break;
                                 }
                             }
@@ -1704,7 +1709,7 @@ public class DrawGen extends javax.swing.JFrame
                                     selectedCategory = getSelectedButtonName(buttonGroupCategoryUSPA4WayFS);
                                     if (selectedCategory != null)
                                     {
-                                        activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
+                                        activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
                                     }
                                     break;
                                 }
@@ -1714,7 +1719,7 @@ public class DrawGen extends javax.swing.JFrame
                                     selectedCategory = getSelectedButtonName(buttonGroupCategoryUSPA8WayFS);
                                     if (selectedCategory != null)
                                     {
-                                        activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
+                                        activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
                                     }
                                     break;
                                 }
@@ -1724,7 +1729,7 @@ public class DrawGen extends javax.swing.JFrame
                                     selectedCategory = getSelectedButtonName(buttonGroupCategoryUSPA4WayVFS);
                                     if (selectedCategory != null)
                                     {
-                                        activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
+                                        activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory(selectedCategory).getDraw());
                                     }
                                     break;
                                 }
@@ -1738,17 +1743,17 @@ public class DrawGen extends javax.swing.JFrame
                             {
                                 case "FOURWAYFS":
                                 {
-                                    activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory("OPEN").getDraw());
+                                    activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory("OPEN").getDraw());
                                     break;
                                 }
                                 case "EIGHTWAYFS":
                                 {
-                                    activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory("OPEN").getDraw());
+                                    activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory("OPEN").getDraw());
                                     break;
                                 }
                                 case "FOURWAYVFS":
                                 {
-                                    activeDraw.setActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory("OPEN").getDraw());
+                                    activeDraw = new ActiveDraw(this.drawType.getGovBody(selectedGovBody).getDiscipline(selectedDiscipline).getCategory("OPEN").getDraw());
                                     break;
                                 }
                             }
@@ -1793,15 +1798,15 @@ public class DrawGen extends javax.swing.JFrame
 
             int PageMargin = 15;
 
-            BufferedImage ScaledImg = activeDraw.img;
-            if ((activeDraw.draw != null) && (ScaledImg != null))
+            BufferedImage activeDrawImg = activeDraw.img();
+            if ((activeDraw.draw != null) && (activeDrawImg != null))
             {
                 g.translate(PageMargin, PageMargin);
                 g.setColor(java.awt.Color.WHITE);
 
-                g.drawImage(ScaledImg, 0, 0, null);
+                g.drawImage(activeDrawImg, 0, 0, null);
 
-                this.setPreferredSize(new java.awt.Dimension(ScaledImg.getWidth() + PageMargin * 2, ScaledImg.getHeight() + PageMargin * 2));
+                this.setPreferredSize(new java.awt.Dimension(activeDrawImg.getWidth() + PageMargin * 2, activeDrawImg.getHeight() + PageMargin * 2));
             }
             this.revalidate();
         }
@@ -1838,14 +1843,14 @@ public class DrawGen extends javax.swing.JFrame
 //                gc.getBounds().getHeight();     //Height in device pixels
 //                pageFormat.getPaper().getHeight();
 //                pageFormat.getHeight();         //Height, in 1/72nds of an inch (points), adjusted for orientation
-                ImageableHeightDevPx = (pageFormat.getImageableHeight() - TitleSpace) * yDevicePixelsPerPoint;
+                ImageableHeightDevPx = (pageFormat.getImageableHeight() - TitleSpace-20) * yDevicePixelsPerPoint;
                 ImageableWidthDevPx = pageFormat.getImageableWidth() * xDevicePixelsPerPoint;
 
                 g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
 
                 if (activeDraw.draw != null)
                 {
-                    int MaxRoundHeightPx = activeDraw.draw.getMaxRoundHeightPx() - TitleSpace;
+                    int MaxRoundHeightPx = activeDraw.draw.getMaxRoundHeightPx() - TitleSpace-20;
                     int TotalDrawWidthPx = activeDraw.draw.getTotalDrawWidthPx();
                     double MaxRoundWidthDevPx = xDevicePixelsPerPoint * 91;     // Approx 32mm (32*72/25.4) Chosen so that all rookie rounds fit on one page.
                     double MinRoundWidthDevPx = xDevicePixelsPerPoint * 57;     // Approx 20mm (35*72/25.4)
