@@ -14,9 +14,9 @@ DrawGen is written in Java, so needs the Java runtime environment installed. It'
 
 ### Version History:
 + 22nd August 2018 - v2.2. 
- + Bug fixes (not clearing manual draws, not accepting lower-case text).
+  + Bug fixes (not clearing manual draws, not accepting lower-case text).
 + 18th August 2018 - v2.1. 
- + Fix copyright notice printing.
+  + Fix copyright notice printing.
 + 26th November 2016 - v2.0. 
   + First open source release.  Updated for latest IPC dive pools.  Allows creation of BPA, IPC and USPA draws.
 + 20th February 2014 - v1.2
