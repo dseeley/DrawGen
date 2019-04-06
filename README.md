@@ -5,14 +5,16 @@ Website: http://dougalseeley.com/my-software/drawgen
 
 ### Features
 + Generates skydives for 4-way, 8-way and VFS categories, all drawn from the FAI IPC dive pools (which are used by most countries' skydiving authorities).
-+ Automatic generation of all categories by substitution. Generates a AAA draw, then removes inappropriate formations, (and adds new to create correct points requirement), to derive AA.  Similarly for A and Rookie dives (and 8-way). Allows teams from lower categories to compare themselves against those above them.
++ Automatic generation of all categories by substitution. Generates a AAA draw, then removes inappropriate formations and adds new to create correct points requirement, to derive AA.  Similarly for A and Rookie dives (and 8-way). Allows teams from lower categories to compare themselves against those above them.
 + Manual mode - you can type in your skydive, and it will generate the pictures for you.
 + Printing support (including print preview)!
 
 ### Installing:
-DrawGen is written in Java, so needs the Java runtime environment installed. It's a free download from here: http://java.com/download. It will work equally well on Windows, Mac or Linux.
+DrawGen is written in Java, so needs the Java runtime environment installed. It's a free download from here: https://www.java.com/en/download/. It will work equally well on Windows, Mac or Linux.
 
 ### Version History:
++ 6th April 2019 - v2.3. 
+  + Updates to 2019 4-way blocks 1 & 13
 + 22nd August 2018 - v2.2. 
   + Bug fixes (not clearing manual draws, not accepting lower-case text).
 + 18th August 2018 - v2.1. 
