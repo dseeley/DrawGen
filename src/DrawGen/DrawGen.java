@@ -7,7 +7,6 @@ import DrawGen.Draw.*;
 import DrawGen.Draw.DrawHieararchy.*;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -57,6 +56,12 @@ public class DrawGen extends javax.swing.JFrame
 
     public DrawGen()
     {
+        /*
+         *enable anti-aliasing
+         */ 
+//        System.setProperty("awt.useSystemAAFontSettings","on");
+//        System.setProperty("swing.aatext", "true");
+
         /* Set the Frame's icon */
         Image CurImg = Toolkit.getDefaultToolkit().getImage(DrawGen.class.getResource("/DrawGen/resources/DrawGen_AppIcon.png"));
         this.setIconImage(CurImg);
@@ -88,7 +93,6 @@ public class DrawGen extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
     {
-
         buttonGroupDisciplineAuto = new javax.swing.ButtonGroup();
         buttonGroupDisciplineManual = new javax.swing.ButtonGroup();
         buttonGroupGoverningBody = new javax.swing.ButtonGroup();
@@ -236,6 +240,7 @@ public class DrawGen extends javax.swing.JFrame
         buttonGroupDisciplineAuto.add(jRadioDisciplineAuto4WayFS);
         jRadioDisciplineAuto4WayFS.setText("4-Way FS");
         jRadioDisciplineAuto4WayFS.setToolTipText("4-Way Forrmation Skydiving");
+        jRadioDisciplineAuto4WayFS.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioDisciplineAuto4WayFS.setName("FOURWAYFS"); // NOI18N
         jRadioDisciplineAuto4WayFS.addItemListener(new java.awt.event.ItemListener()
         {
@@ -248,6 +253,7 @@ public class DrawGen extends javax.swing.JFrame
         buttonGroupDisciplineAuto.add(jRadioDisciplineAuto8WayFS);
         jRadioDisciplineAuto8WayFS.setText("8-Way FS");
         jRadioDisciplineAuto8WayFS.setToolTipText("8-Way Forrmation Skydiving");
+        jRadioDisciplineAuto8WayFS.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioDisciplineAuto8WayFS.setName("EIGHTWAYFS"); // NOI18N
         jRadioDisciplineAuto8WayFS.addItemListener(new java.awt.event.ItemListener()
         {
@@ -260,6 +266,7 @@ public class DrawGen extends javax.swing.JFrame
         buttonGroupDisciplineAuto.add(jRadioDisciplineAuto4WayVFS);
         jRadioDisciplineAuto4WayVFS.setText("4-Way VFS");
         jRadioDisciplineAuto4WayVFS.setToolTipText("4-Way Vertical Forrmation Skydiving");
+        jRadioDisciplineAuto4WayVFS.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioDisciplineAuto4WayVFS.setName("FOURWAYVFS"); // NOI18N
         jRadioDisciplineAuto4WayVFS.addItemListener(new java.awt.event.ItemListener()
         {
@@ -291,10 +298,12 @@ public class DrawGen extends javax.swing.JFrame
         );
 
         jPanelGoverningBody.setBorder(javax.swing.BorderFactory.createTitledBorder("Governing Body"));
+        jPanelGoverningBody.setName(""); // NOI18N
         jPanelGoverningBody.setPreferredSize(new java.awt.Dimension(118, 90));
 
         buttonGroupGoverningBody.add(jRadioGovBodyBPA);
         jRadioGovBodyBPA.setText("BPA");
+        jRadioGovBodyBPA.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioGovBodyBPA.setName("BPA"); // NOI18N
         jRadioGovBodyBPA.addItemListener(new java.awt.event.ItemListener()
         {
@@ -306,6 +315,7 @@ public class DrawGen extends javax.swing.JFrame
 
         buttonGroupGoverningBody.add(jRadioGovBodyUSPA);
         jRadioGovBodyUSPA.setText("USPA");
+        jRadioGovBodyUSPA.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioGovBodyUSPA.setName("USPA"); // NOI18N
         jRadioGovBodyUSPA.addItemListener(new java.awt.event.ItemListener()
         {
@@ -316,7 +326,9 @@ public class DrawGen extends javax.swing.JFrame
         });
 
         buttonGroupGoverningBody.add(jRadioGovBodyIPC);
+        jRadioGovBodyIPC.setFont(jRadioGovBodyIPC.getFont());
         jRadioGovBodyIPC.setText("IPC");
+        jRadioGovBodyIPC.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioGovBodyIPC.setName("IPC"); // NOI18N
         jRadioGovBodyIPC.addItemListener(new java.awt.event.ItemListener()
         {
@@ -356,6 +368,7 @@ public class DrawGen extends javax.swing.JFrame
 
         buttonGroupCategoryBPA4WayFS.add(jRadioBPA4WayFSAAA);
         jRadioBPA4WayFSAAA.setText("AAA");
+        jRadioBPA4WayFSAAA.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioBPA4WayFSAAA.setName("AAA"); // NOI18N
         jRadioBPA4WayFSAAA.addItemListener(new java.awt.event.ItemListener()
         {
@@ -367,6 +380,7 @@ public class DrawGen extends javax.swing.JFrame
 
         buttonGroupCategoryBPA4WayFS.add(jRadioBPA4WayFSAA);
         jRadioBPA4WayFSAA.setText("AA");
+        jRadioBPA4WayFSAA.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioBPA4WayFSAA.setName("AA"); // NOI18N
         jRadioBPA4WayFSAA.addItemListener(new java.awt.event.ItemListener()
         {
@@ -378,6 +392,7 @@ public class DrawGen extends javax.swing.JFrame
 
         buttonGroupCategoryBPA4WayFS.add(jRadioBPA4WayFSA);
         jRadioBPA4WayFSA.setText("A");
+        jRadioBPA4WayFSA.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioBPA4WayFSA.setName("A"); // NOI18N
         jRadioBPA4WayFSA.addItemListener(new java.awt.event.ItemListener()
         {
@@ -389,6 +404,7 @@ public class DrawGen extends javax.swing.JFrame
 
         buttonGroupCategoryBPA4WayFS.add(jRadioBPA4WayFSRookies);
         jRadioBPA4WayFSRookies.setText("Rookies");
+        jRadioBPA4WayFSRookies.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioBPA4WayFSRookies.setName("ROOKIES"); // NOI18N
         jRadioBPA4WayFSRookies.addItemListener(new java.awt.event.ItemListener()
         {
@@ -691,6 +707,7 @@ public class DrawGen extends javax.swing.JFrame
         buttonGroupDisciplineManual.add(jRadioDisciplineManual4WayFS);
         jRadioDisciplineManual4WayFS.setSelected(true);
         jRadioDisciplineManual4WayFS.setText("4-Way FS");
+        jRadioDisciplineManual4WayFS.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioDisciplineManual4WayFS.setName("FOURWAYFS"); // NOI18N
         jRadioDisciplineManual4WayFS.addItemListener(new java.awt.event.ItemListener()
         {
@@ -702,6 +719,7 @@ public class DrawGen extends javax.swing.JFrame
 
         buttonGroupDisciplineManual.add(jRadioDisciplineManual8WayFS);
         jRadioDisciplineManual8WayFS.setText("8-Way FS");
+        jRadioDisciplineManual8WayFS.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioDisciplineManual8WayFS.setName("EIGHTWAYFS"); // NOI18N
         jRadioDisciplineManual8WayFS.addItemListener(new java.awt.event.ItemListener()
         {
@@ -713,6 +731,7 @@ public class DrawGen extends javax.swing.JFrame
 
         buttonGroupDisciplineManual.add(jRadioDisciplineManual4WayVFS);
         jRadioDisciplineManual4WayVFS.setText("4-Way VFS");
+        jRadioDisciplineManual4WayVFS.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioDisciplineManual4WayVFS.setName("FOURWAYVFS"); // NOI18N
         jRadioDisciplineManual4WayVFS.addItemListener(new java.awt.event.ItemListener()
         {
@@ -828,6 +847,7 @@ public class DrawGen extends javax.swing.JFrame
         jTabbedPaneSelect.addTab("Manual", jPanelTabManual);
 
         jPanelPictureOutput.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelPictureOutput.setRequestFocusEnabled(false);
         jPanelPictureOutput.setLayout(null);
         jScrollPanePictureOutput.setViewportView(jPanelPictureOutput);
         jScrollPanePictureOutput.getVerticalScrollBar().setUnitIncrement(25);
@@ -1112,8 +1132,24 @@ public class DrawGen extends javax.swing.JFrame
 
             Doc doc = new SimpleDoc(jPanelPictureOutput, myDocFlavor, null);
 
-            PrintService pSelection = ServiceUI.printDialog(null, 100, 100, AllPrtServices, this.myPrintService, this.myDocFlavor, this.printReqattrs);
 
+// Attempt to fix flickering print dialog - TODO
+//            this.printReqattrs.add(DialogTypeSelection.NATIVE);
+//            java.awt.print.PrinterJob myPrinterJob = java.awt.print.PrinterJob.getPrinterJob();
+//            try
+//            {
+//                myPrinterJob.setPrintService(this.myPrintService);
+//            }
+//            catch (PrinterException e)
+//            {
+//                System.out.println(e);
+//            }
+//
+//            if (myPrinterJob.printDialog(this.printReqattrs))
+//            {
+//                DocPrintJob myDocPrintJob =  this.myPrintService.createPrintJob();
+            
+            PrintService pSelection = ServiceUI.printDialog(null, 100, 100, AllPrtServices, this.myPrintService, this.myDocFlavor, this.printReqattrs);
             if (pSelection != null)
             {
                 DocPrintJob myDocPrintJob = pSelection.createPrintJob();
@@ -1202,15 +1238,22 @@ public class DrawGen extends javax.swing.JFrame
     private void jMenuItemGenerateAutoCurrentActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItemGenerateAutoCurrentActionPerformed
     {//GEN-HEADEREND:event_jMenuItemGenerateAutoCurrentActionPerformed
         int OkToDeletePrevious = JOptionPane.OK_OPTION;
-        if (activeDraw.draw != null && activeDraw.draw.getDraw().isEmpty() == false)
+        if (activeDraw.draw != null)
         {
-            OkToDeletePrevious = JOptionPane.showConfirmDialog(this, "Exising draw will be deleted.  OK?", "Question?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-        }
+            if (activeDraw.draw.getDraw().isEmpty() == false)
+            {
+                OkToDeletePrevious = JOptionPane.showConfirmDialog(this, "Existing draw will be deleted.  OK?", "Question?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            }
 
-        if (OkToDeletePrevious == JOptionPane.OK_OPTION)
+            if (OkToDeletePrevious == JOptionPane.OK_OPTION)
+            {
+                this.activeDraw.draw.generateRandomised();
+                autoDrawMgr.activate();
+            }
+        }
+        else
         {
-            this.activeDraw.draw.generateRandomised();
-            autoDrawMgr.activate();
+            JOptionPane.showMessageDialog(this, "Please select a Governing Body, Discipline and Category");
         }
     }//GEN-LAST:event_jMenuItemGenerateAutoCurrentActionPerformed
 
@@ -1221,7 +1264,7 @@ public class DrawGen extends javax.swing.JFrame
         {
             if (activeDraw.draw.getDraw().isEmpty() == false)
             {
-                OkToDeletePrevious = JOptionPane.showConfirmDialog(this, "Exising draw will be deleted.  OK?", "Question?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+                OkToDeletePrevious = JOptionPane.showConfirmDialog(this, "Existing draw will be deleted.  OK?", "Question?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             }
 
             if (OkToDeletePrevious == JOptionPane.OK_OPTION)
@@ -1249,7 +1292,7 @@ public class DrawGen extends javax.swing.JFrame
         {
             if (activeDraw.draw.getDraw().isEmpty() == false)
             {
-                OkToDeletePrevious = JOptionPane.showConfirmDialog(this, "Exising draw will be deleted.  OK?", "Question?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+                OkToDeletePrevious = JOptionPane.showConfirmDialog(this, "Existing draw will be deleted.  OK?", "Question?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             }
 
             if (OkToDeletePrevious == JOptionPane.OK_OPTION)
@@ -1277,7 +1320,7 @@ public class DrawGen extends javax.swing.JFrame
 
         if (activeDraw.draw != null && activeDraw.draw.getDraw().isEmpty() == false)
         {
-            OkToDeletePrevious = JOptionPane.showConfirmDialog(this, "Exising draw will be deleted.  OK?", "Question?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            OkToDeletePrevious = JOptionPane.showConfirmDialog(this, "Existing draw will be deleted.  OK?", "Question?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         }
 
         if (OkToDeletePrevious == JOptionPane.OK_OPTION)
@@ -1455,22 +1498,22 @@ public class DrawGen extends javax.swing.JFrame
     private class ActiveDraw
     {
         public Draw draw = null;
-        
+
+        public ActiveDraw(Draw draw)
+        {
+            this.draw = draw;
+        }
+
         public BufferedImage img()
         {
             if (this.draw != null)
             {
-                return (this.draw.getScaledImg(scalePercent));
+                return (this.draw.getImg());
             }
             else
             {
                 return null;
             }
-        }
-
-        public ActiveDraw(Draw draw)
-        {
-            this.draw = draw;
         }
     }
 
@@ -1792,21 +1835,30 @@ public class DrawGen extends javax.swing.JFrame
         public static final long serialVersionUID = 1L;
 
         @Override
-        public void paintComponent(Graphics g)
+        public void paintComponent(Graphics graphics)
         {
-            super.paintComponent(g);
+            double ScaleFactor = scalePercent / 100.0;
+            
+            super.paintComponent(graphics);
+            Graphics2D g2d = (Graphics2D) graphics;
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+            g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
 
             int PageMargin = 15;
 
             BufferedImage activeDrawImg = activeDraw.img();
             if ((activeDraw.draw != null) && (activeDrawImg != null))
             {
-                g.translate(PageMargin, PageMargin);
-                g.setColor(java.awt.Color.WHITE);
+                g2d.translate(PageMargin, PageMargin);
+                g2d.setColor(java.awt.Color.WHITE);
 
-                g.drawImage(activeDrawImg, 0, 0, null);
+                g2d.scale(ScaleFactor, ScaleFactor);
+                g2d.drawImage(activeDrawImg, 0, 0, null);
 
-                this.setPreferredSize(new java.awt.Dimension(activeDrawImg.getWidth() + PageMargin * 2, activeDrawImg.getHeight() + PageMargin * 2));
+                this.setPreferredSize(new java.awt.Dimension((int)(activeDrawImg.getWidth() * ScaleFactor) + PageMargin * 2, (int) (activeDrawImg.getHeight() * ScaleFactor) + PageMargin * 2));
             }
             this.revalidate();
         }
@@ -1815,6 +1867,11 @@ public class DrawGen extends javax.swing.JFrame
         public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException
         {
             Graphics2D g2d = (Graphics2D) graphics;
+            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+            g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+            g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
             java.awt.GraphicsConfiguration gc = g2d.getDeviceConfiguration();
             if (gc.getBounds().getHeight() == 0)
             {
@@ -1822,12 +1879,11 @@ public class DrawGen extends javax.swing.JFrame
                  * This is a dummy Graphics object, designed to test
                  * the water for the real printing. Send it an image so that the
                  * printing subsystem knows that an image will be produced
-                 */
- /*
+
                  * See http://docstore.mik.ua/orelly/java-ent/jfc/ch05_02.htm
                  * and http://www.neooffice.org/doc/practical_java_hacks.html
                  */
-                activeDraw.draw.getDraw().get(0).DrawRound(g2d, 0, 0, 1);
+                g2d.drawImage(activeDraw.draw.getDraw().get(0).getImg(), 0, 0, null);
                 System.out.println("gc.getBounds().getHeight() == 0");
                 return NO_SUCH_PAGE;
             }
@@ -1843,14 +1899,14 @@ public class DrawGen extends javax.swing.JFrame
 //                gc.getBounds().getHeight();     //Height in device pixels
 //                pageFormat.getPaper().getHeight();
 //                pageFormat.getHeight();         //Height, in 1/72nds of an inch (points), adjusted for orientation
-                ImageableHeightDevPx = (pageFormat.getImageableHeight() - TitleSpace-20) * yDevicePixelsPerPoint;
+                ImageableHeightDevPx = (pageFormat.getImageableHeight() - TitleSpace - 20) * yDevicePixelsPerPoint;
                 ImageableWidthDevPx = pageFormat.getImageableWidth() * xDevicePixelsPerPoint;
 
                 g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
 
                 if (activeDraw.draw != null)
                 {
-                    int MaxRoundHeightPx = activeDraw.draw.getMaxRoundHeightPx() - TitleSpace-20;
+                    int MaxRoundHeightPx = activeDraw.draw.getMaxRoundHeightPx() - TitleSpace - 20;
                     int TotalDrawWidthPx = activeDraw.draw.getTotalDrawWidthPx();
                     double MaxRoundWidthDevPx = xDevicePixelsPerPoint * 91;     // Approx 32mm (32*72/25.4) Chosen so that all rookie rounds fit on one page.
                     double MinRoundWidthDevPx = xDevicePixelsPerPoint * 57;     // Approx 20mm (35*72/25.4)
@@ -1882,11 +1938,6 @@ public class DrawGen extends javax.swing.JFrame
                     xPx2PtScaleFactor = xDevicePixelsPerPoint / Dev2ImgPixelRatio;
                     yPx2PtScaleFactor = yDevicePixelsPerPoint / Dev2ImgPixelRatio;
 
-                    g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                    g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-                    g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-                    g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
                     g2d.scale(1 / xPx2PtScaleFactor, 1 / yPx2PtScaleFactor);
 
                     int WidthCount = 0;
@@ -1940,7 +1991,8 @@ public class DrawGen extends javax.swing.JFrame
                             g2d.setFont(g2d.getFont().deriveFont((float) (20.0)));
                             g2d.drawString("Round " + (RoundCount + 1), xPos, yPos - 3);
 
-                            RoundElem.DrawRound(g2d, xPos, yPos, 1.0);
+                            g2d.drawImage(RoundElem.getImg(), xPos, yPos, null);
+
                             xPos += RoundElem.GetRoundWidthPx() + Draw.ROUNDSPACING;
                         }
 
@@ -1973,6 +2025,10 @@ public class DrawGen extends javax.swing.JFrame
         try
         {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+//            javax.swing.UIManager.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//            javax.swing.UIManager.put(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+//            javax.swing.UIManager.put(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+//            javax.swing.UIManager.put(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
         }
         catch (Exception ex)
         {

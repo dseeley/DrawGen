@@ -80,30 +80,21 @@ public abstract class Draw
      */
     protected abstract void loadDivePool(java.util.ArrayList<Formation> inDivePool);
 
+
     /**
-     * Creates a single image consisting of all the rounds, arranged vertically, scaled as defined by the user.
+     * Creates a single image consisting of all the rounds, arranged vertically.
      * Writes a round title above each round.
      */
-    public BufferedImage getScaledImg(int scaleFactorPercent)
+    public BufferedImage getImg()
     {
-        BufferedImage scaledImg = null;
+        BufferedImage img = null;
         if (this.draw.size() > 0)
         {
             int xPos = 0, yPos = 0;
             int roundNumberSpacer = 20;    //pixels
 
-            double ScaleFactor = scaleFactorPercent / 100.0;
-
-            scaledImg = new BufferedImage((int) (this.getTotalDrawWidthPx() * ScaleFactor), (int) (this.getMaxRoundHeightPx() * ScaleFactor) + roundNumberSpacer, BufferedImage.TYPE_INT_RGB);
-            Graphics2D buf_g2d = scaledImg.createGraphics();
-
-            buf_g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-            buf_g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            buf_g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-            buf_g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-            buf_g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-
-            buf_g2d.scale(ScaleFactor, ScaleFactor);
+            img = new BufferedImage((int) (this.getTotalDrawWidthPx()), (int) (this.getMaxRoundHeightPx()) + roundNumberSpacer, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D buf_g2d = img.createGraphics();
 
             buf_g2d.setColor(java.awt.Color.WHITE);
             buf_g2d.fillRect(0, 0, this.getTotalDrawWidthPx(), this.getMaxRoundHeightPx() + roundNumberSpacer);
@@ -115,12 +106,12 @@ public abstract class Draw
 
                 buf_g2d.setFont(buf_g2d.getFont().deriveFont((float) (20.0)));
                 buf_g2d.drawString("Round " + (RoundCount + 1), xPos, yPos + roundNumberSpacer - 3);
-                RoundElem.DrawRound(buf_g2d, xPos, yPos + roundNumberSpacer, 1.0);
+                buf_g2d.drawImage(RoundElem.getImg(), xPos, yPos + roundNumberSpacer, null);
                 xPos += RoundElem.GetRoundWidthPx() + Draw.ROUNDSPACING;
             }
         }
 
-        return scaledImg;
+        return img;
     }
 
     /**

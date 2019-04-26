@@ -13,6 +13,8 @@ Website: http://dougalseeley.com/my-software/drawgen
 DrawGen is written in Java, so needs the Java runtime environment installed. It's a free download from here: https://www.java.com/en/download/. It will work equally well on Windows, Mac or Linux.
 
 ### Version History:
++ 26th April 2019 - v2.4.
+  + Updates to for Java 11.
 + 6th April 2019 - v2.3. 
   + Updates to 2019 4-way blocks 1 & 13
 + 22nd August 2018 - v2.2. 

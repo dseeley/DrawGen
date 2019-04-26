@@ -7,7 +7,9 @@ package DrawGen;
  */
 public class AboutBox extends javax.swing.JDialog
 {
-    /** Creates new form About */
+    /**
+     * Creates new form About
+     */
     public AboutBox(java.awt.Frame parent, boolean modal)
     {
         super(parent, modal);
@@ -23,7 +25,6 @@ public class AboutBox extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
     {
-
         jPanel1 = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();

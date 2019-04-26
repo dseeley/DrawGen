@@ -78,7 +78,7 @@ public class Round
                 RoundWidth = buffImg.getWidth(null);
             }
         }
-        return RoundWidth + 5;
+        return RoundWidth;
     }
 
     public Formation getFormationAt(int index)
@@ -101,28 +101,23 @@ public class Round
         this.formationList.clear();
     }
 
-    public void DrawRound(Graphics2D g2d, int xOrigin, int yOrigin, double scale)
+    public BufferedImage getImg()
     {
-        int yPos = yOrigin;
+        int xPos = 0, yPos = 0;
 
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        BufferedImage img = new BufferedImage(this.GetRoundWidthPx(), this.GetRoundHeightPx(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = img.createGraphics();
 
-        //g2d.drawLine(10, 100, 30, 100);
         for (Formation formationElem : this.formationList)
         {
-            BufferedImage buffImg = formationElem.buffImg;
-            int ScaledWidth = (int) (buffImg.getWidth() / scale);
-            int ScaledHeight = (int) (buffImg.getHeight() / scale);
+            BufferedImage formationImg = formationElem.buffImg;
 
             /* Draw the formation */
-            g2d.drawImage(buffImg, xOrigin, yPos, ScaledWidth, ScaledHeight, null);
+            g2d.setColor(java.awt.Color.BLACK);
+            g2d.drawImage(formationImg, xPos, yPos, null);
 
             /* Draw a box around it */
-            g2d.draw3DRect(xOrigin + 1, yPos + 1, ScaledWidth - 2, ScaledHeight - 2, false);
+            g2d.draw(new java.awt.Rectangle(xPos, yPos, formationImg.getWidth()-1, formationImg.getHeight()-1));
 
             /* Draw the letter or number of the random/block
              * This is not a great idea - font scaling would need to change because the image is scaled if it doesn't fit the height.
@@ -132,11 +127,11 @@ public class Round
             /* drawLine the lines between the inters (two lines) */
             if (formationElem instanceof Formation.cBlock)
             {
-                int ThirdHeight = (int) (((buffImg.getHeight(null) / scale / 3.0)));
+                int ThirdHeight = (int) (((formationImg.getHeight(null) / 3.0)));
 
                 /* Lines */
-                g2d.drawLine(xOrigin + 2, yPos + ThirdHeight, xOrigin + ScaledWidth - 1, yPos + ThirdHeight);           //First Divider
-                g2d.drawLine(xOrigin + 2, yPos + ThirdHeight * 2, xOrigin + ScaledWidth - 1, yPos + ThirdHeight * 2);   //Lower divider
+                g2d.drawLine(xPos + 1, yPos + ThirdHeight, xPos + formationImg.getWidth() - 1, yPos + ThirdHeight);           //First Divider
+                g2d.drawLine(xPos + 1, yPos + ThirdHeight * 2, xPos + formationImg.getWidth() - 1, yPos + ThirdHeight * 2);   //Lower divider
 
                 /* drawStr the Formation names
                  * This is not a great idea - font scaling would need to change because the image is scaled if it doesn't fit the height.
@@ -145,16 +140,18 @@ public class Round
 //                String Name2Str = ((cFormations.cBlock) elem).Name2;
 //                String InterStr = "(Inter)";
 //
-//                g2d.drawString(Name1Str, xOrigin + ((ScaledWidth - g2d.getFontMetrics().stringWidth(Name1Str)) / 2) + 1, yPos + ThirdHeight - 3);
-//                g2d.drawString(InterStr, xOrigin + ((ScaledWidth - g2d.getFontMetrics().stringWidth(InterStr)) / 2) + 1, yPos + ThirdHeight * 2 - 3);
-//                g2d.drawString(Name2Str, xOrigin + ((ScaledWidth - g2d.getFontMetrics().stringWidth(Name2Str)) / 2) + 1, yPos + ThirdHeight * 3 - 3);
+//                g2d.drawString(Name1Str, xOrigin + ((formationImg.getWidth() - g2d.getFontMetrics().stringWidth(Name1Str)) / 2) + 1, yPos + ThirdHeight - 3);
+//                g2d.drawString(InterStr, xOrigin + ((formationImg.getWidth() - g2d.getFontMetrics().stringWidth(InterStr)) / 2) + 1, yPos + ThirdHeight * 2 - 3);
+//                g2d.drawString(Name2Str, xOrigin + ((formationImg.getWidth() - g2d.getFontMetrics().stringWidth(Name2Str)) / 2) + 1, yPos + ThirdHeight * 3 - 3);
             }
 //            else
 //            {
 //                String NameStr = ((cFormations.cRandom) elem).Name;
-//                g2d.drawString(NameStr, xOrigin + ((ScaledWidth - g2d.getFontMetrics().stringWidth(NameStr)) / 2) + 1, yPos + ScaledHeight - 3);
+//                g2d.drawString(NameStr, xOrigin + ((formationImg.getWidth() - g2d.getFontMetrics().stringWidth(NameStr)) / 2) + 1, yPos + formationImg.getHeight() - 3);
 //            }
-            yPos += (buffImg.getHeight() + Round.FormationSpacing) / scale;
+            yPos += (formationImg.getHeight() + Round.FormationSpacing);
         }
+
+        return img;
     }
 }
