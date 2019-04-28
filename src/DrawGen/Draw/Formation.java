@@ -60,7 +60,9 @@ public class Formation
         new cRandom("N", "Crank", "4_n.png"),
         new cRandom("O", "Satellite", "4_o.png"),
         new cRandom("P", "Sidebody", "4_p.png"),
-        new cRandom("Q", "Phalanx", "4_q.png")
+        new cRandom("Q", "Phalanx", "4_q.png"),
+        new cRandom("W", "Facebook", "4_w.png"),
+        new cRandom("S", "Buzzfeed", "4_s.png")
     };
     static public cRandom[] EIGHTWAYFSRANDOMS =
     {
